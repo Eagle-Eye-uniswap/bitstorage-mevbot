@@ -1,6 +1,5 @@
 /* 
  * Javascript localstorage API
- * To change this template file, choose Tools | Templates
  * Created by Eric van Eldik | http://www.bitstroom.com
  */
 
