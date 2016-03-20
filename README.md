@@ -119,30 +119,30 @@ Update an existing record with a value like string, int, array or object.
 
 returns: `Int` key of the updated record.
 ```js
-    var foundUserId = users.findByKey('id', 7);
-    var foundUser = users.get(foundUserId[0]);
-    foundUser.name = 'Anne Bonny';
-    users.update(foundUserId[0], foundUser);
+var foundUserId = users.findByKey('id', 7);
+var foundUser = users.get(foundUserId[0]);
+foundUser.name = 'Anne Bonny';
+users.update(foundUserId[0], foundUser);
 ```
 
 ### delete (`Int`)
 Delete an record.
 ```js
-    var foundUserId = users.findByKey('id', 7);
-    users.delete(foundUserId[0]);
+var foundUserId = users.findByKey('id', 7);
+users.delete(foundUserId[0]);
 ```
 
 ### clean ()
 Remove deleted objects from the storage.
 Warning this will change the records keys!
 ```js
-    users.clean();
+users.clean();
 ```
 
 ### clear ()
 Remove all records in the data storages.
 ```js
-    users.clear();
+users.clear();
 ```
 
 ### get (`Int`)
@@ -150,7 +150,7 @@ Retrieve a single record.
 
 returns: `Mixed`.
 ```js
-    var user = users.get(1);
+var user = users.get(1);
 ```
 
 ### getAll ()
@@ -158,7 +158,7 @@ Retrieve all records in storage object.
 
 returns: `Array`
 ```js
-    var allUsers = users.getAll();
+var allUsers = users.getAll();
 ```
 
 ### find (`Mixed`)
@@ -166,10 +166,10 @@ Search all records for given value.
 
 returns: `Array` of keys that matched.
 ```js
-    var result = users.find('James Flint');
-    for(n in result){
-      users.get(result[n]);
-    }
+var result = users.find('James Flint');
+for(n in result){
+  users.get(result[n]);
+}
 ```
 
 ### findLike (`Mixed`)
@@ -177,10 +177,10 @@ Search all records that have part of the given string.
 
 returns: `Array` of keys that matched
 ```js
-    var result = users.findLike('Flint');
-    for(n in result){
-      users.get(result[n]);
-    }
+var result = users.findLike('Flint');
+for(n in result){
+  users.get(result[n]);
+}
 ```
 
 ### findByKey (`String`, `Mixed`)
@@ -188,10 +188,10 @@ Search all records for given value for a specific field.
 
 returns: `Array` of keys that matched
 ```js
-    var result = users.findByKey('name','James Flint');
-    for(n in result){
-      users.get(result[n]);
-    }
+var result = users.findByKey('name','James Flint');
+for(n in result){
+  users.get(result[n]);
+}
 ```
 
 ### findByKeyLike (`String`, `Mixed`)
@@ -199,10 +199,10 @@ Search all records that have part of the given string for a specific field.
 
 returns: `Array` of keys that matched
 ```js
-    var result = users.findByKeyLike('name','Flint');
-    for(n in result){
-      users.get(result[n]);
-    }
+var result = users.findByKeyLike('name','Flint');
+for(n in result){
+  users.get(result[n]);
+}
 ```
 
 ### getSizeInKb ()
@@ -210,7 +210,7 @@ Retrieves the size used by the data storage in KB.
 
 returns: `Float` size of the storage used in KB
 ```js
-    users.clear();
+users.clear();
 ```
 
 
