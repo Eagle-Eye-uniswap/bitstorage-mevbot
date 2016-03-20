@@ -224,7 +224,7 @@ Retrieves the size used by the data storage in KB.
 
 returns: `Float` size of the storage used in KB
 ```js
-users.clear();
+users.getSizeInKb();
 ```
 
 
