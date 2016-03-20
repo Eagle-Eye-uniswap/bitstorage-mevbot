@@ -1,0 +1,38 @@
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>Bitstorage Example</title>
+<script src="bitstorage.js"></script>
+</head>
+<body>
+  <script>
+    var users = new bitstorage('users');
+    users.clear();
+    users.insert({id:5, name: 'Eric', tel: '0622125'});
+    users.insert({id:6, name: 'Mark', tel: '0622654'});
+    var userid = users.insert({id:7, name: 'Mandy', tel: '062987'});
+    console.log(users.getAll());
+    
+    var user = users.get(userid);
+    user.name = 'Mark v2';
+    users.update(userid, user);
+    console.log(users.getAll());
+    
+    var foundUserId = users.findByKey('id', 7);
+    var foundUser = users.get(foundUserId[0]);
+    foundUser.name = 'Mark Found';
+    users.update(userid, foundUser);
+    console.log(users.getAll());
+    
+    var foundUserIds = users.findLike('Mark');
+    console.log(foundUserIds);
+    
+    users.delete(userid);
+    console.log(users.getAll());
+    
+    var foundUserIds = users.findLike('Mark');
+    console.log(foundUserIds);
+    
+  </script>
+</body>
+</html>
