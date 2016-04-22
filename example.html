@@ -45,8 +45,8 @@
     // Clear the storage container to make sure it's empty, Warning this will Delete all previous entries!
     users.clear();
     // Insert new objects into storage container
-    users.insert({id:5, name: 'James Flint', tel: '0622125'});
-    users.insert({id:6, name: 'Charles Vane', tel: '0622654'});
+    users.insert({id:5, name: 'James Flint 0622125', tel: '0622125'});
+    users.insert({id:6, name: 'Charles Vane 0622125', tel: '0622654'});
     // Insert will give an unique key that allows you to retrieve the object
     var userid = users.insert({id:7, name: 'Eleanor Guthrie', tel: '062987'});
     
@@ -79,8 +79,9 @@
     console.log(foundUserIds);
     
     // Search all objects for a string, findLike is not case sensitive, unlike find that is case sensitive
-    var foundUserIds = users.findByKeyLike('tel', '0622');
+    var foundUserIds = users.findByKeyLike(['tel','name'], '0622');
     // Output array: [0, 1], we found James Flint and Charles Vane
+    console.log("foundUserIds");
     console.log(foundUserIds);
     
     // Delete user Anne Bonny, this record is undefined after delete to keep the key structure intact.

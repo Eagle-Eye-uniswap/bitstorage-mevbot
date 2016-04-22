@@ -109,6 +109,7 @@ bitstorage.prototype.findByKey = function(key, search) {
       if(this.data[i] && this.data[i][strKey]){
         if(this.data[i][strKey]==search) {
           results.push(i);
+          i++; // go to next result to avoid dubbel results
         }
       }
     }
@@ -130,6 +131,7 @@ bitstorage.prototype.findByKeyLike = function(key, search) {
         toSearch = this.data[i][strKey].toLowerCase();
         if(toSearch.indexOf(search)!=-1) {
           results.push(i);
+          i++; // go to next result to avoid dubbel results
         }
       }
     }
