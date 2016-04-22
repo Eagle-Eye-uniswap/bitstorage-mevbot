@@ -59,11 +59,13 @@ bitstorage.prototype.find = function(search) {
       if(typeof this.data[i] == 'string'){
         if(this.data[i]==search) {
           results.push(i);
+          i++;
         }
       }else{
         for(key in this.data[i]) {
           if(this.data[i][key]==search) {
             results.push(i);
+            i++;
           }
         }
       }
@@ -82,6 +84,7 @@ bitstorage.prototype.findLike = function(search) {
         toSearch = this.data[i].toLowerCase();
         if(toSearch.indexOf(search)!=-1) {
           results.push(i);
+          i++;
         }
       }else{
         for(key in this.data[i]) {
@@ -89,6 +92,7 @@ bitstorage.prototype.findLike = function(search) {
             toSearch = this.data[i][key].toLowerCase();
             if(toSearch.indexOf(search)!=-1) {
               results.push(i);
+              i++;
             }
           }
         }
