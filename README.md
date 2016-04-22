@@ -197,7 +197,7 @@ for(n in result){
 }
 ```
 
-### findByKey (`String`, `Mixed`)
+### findByKey (`String` or `Array`, `Mixed`)
 Search all records for given value for a specific field.
 
 returns: `Array` of keys that matched
@@ -208,7 +208,7 @@ for(n in result){
 }
 ```
 
-### findByKeyLike (`String`, `Mixed`)
+### findByKeyLike (`String` or `Array`, `Mixed`)
 Search all records that have part of the given string for a specific field.
 
 returns: `Array` of keys that matched
