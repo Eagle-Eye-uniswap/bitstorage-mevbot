@@ -100,10 +100,16 @@ bitstorage.prototype.findLike = function(search) {
 
 bitstorage.prototype.findByKey = function(key, search) {
   var results = [];
+  if(typeof key == 'string'){
+    key = [key];
+  }
   for(var i=0; i<this.data.length; i++) {
-    if(this.data[i] && this.data[i][key]){
-      if(this.data[i][key]==search) {
-        results.push(i);
+    for(var c=0; c<key.length; c++) {
+      var strKey = key[c];
+      if(this.data[i] && this.data[i][strKey]){
+        if(this.data[i][strKey]==search) {
+          results.push(i);
+        }
       }
     }
   }
@@ -113,12 +119,18 @@ bitstorage.prototype.findByKey = function(key, search) {
 bitstorage.prototype.findByKeyLike = function(key, search) {
   var results = [];
   var toSearch = '';
+  if(typeof key == 'string'){
+    key = [key];
+  }
   search = search.toLowerCase();
   for(var i=0; i<this.data.length; i++) {
-    if(this.data[i] && this.data[i][key] && typeof this.data[i][key] == 'string'){
-      toSearch = this.data[i][key].toLowerCase();
-      if(toSearch.indexOf(search)!=-1) {
-        results.push(i);
+    for(var c=0; c<key.length; c++) {
+      var strKey = key[c];
+      if(this.data[i] && this.data[i][strKey] && typeof this.data[i][strKey] == 'string'){
+        toSearch = this.data[i][strKey].toLowerCase();
+        if(toSearch.indexOf(search)!=-1) {
+          results.push(i);
+        }
       }
     }
   }
