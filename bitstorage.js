@@ -23,12 +23,16 @@ bitstorage.prototype.clear = function() {
 };
 
 bitstorage.prototype.clean = function() {
-  var newData = [];
-  for(key in this.data) {
-    newData.push(this.data[key]);
-  }
-  this.data = newData;
+  this.data = this.cleanData(this.data);
   this.saveToLocal();
+};
+
+bitstorage.prototype.cleanData = function(data) {
+  var newData = [];
+  for(key in data) {
+    newData.push(data[key]);
+  }
+  return newData;
 };
 
 bitstorage.prototype.saveToLocal = function() {
@@ -58,19 +62,20 @@ bitstorage.prototype.find = function(search) {
     if(this.data[i]){
       if(typeof this.data[i] == 'string'){
         if(this.data[i]==search) {
-          results.push(i);
-          i++;
+          var iString = i.toString(); 
+          results[iString] = i;
         }
       }else{
         for(key in this.data[i]) {
           if(this.data[i][key]==search) {
-            results.push(i);
-            i++;
+            var iString = i.toString(); 
+            results[iString] = i;
           }
         }
       }
     }
   }
+  results = this.cleanData(results);
   return results;
 };
 
@@ -83,22 +88,23 @@ bitstorage.prototype.findLike = function(search) {
       if(typeof this.data[i] == 'string'){
         toSearch = this.data[i].toLowerCase();
         if(toSearch.indexOf(search)!=-1) {
-          results.push(i);
-          i++;
+          var iString = i.toString(); 
+          results[iString] = i;
         }
       }else{
         for(key in this.data[i]) {
           if(this.data[i][key] && typeof this.data[i][key] == 'string'){
             toSearch = this.data[i][key].toLowerCase();
             if(toSearch.indexOf(search)!=-1) {
-              results.push(i);
-              i++;
+              var iString = i.toString(); 
+              results[iString] = i;
             }
           }
         }
       }
     }
   }
+  results = this.cleanData(results);
   return results;
 };
 
@@ -112,12 +118,13 @@ bitstorage.prototype.findByKey = function(key, search) {
       var strKey = key[c];
       if(this.data[i] && this.data[i][strKey]){
         if(this.data[i][strKey]==search) {
-          results.push(i);
-          i++; // go to next result to avoid dubbel results
+          var iString = i.toString(); 
+          results[iString] = i;
         }
       }
     }
   }
+  results = this.cleanData(results);
   return results;
 };
 
@@ -134,12 +141,13 @@ bitstorage.prototype.findByKeyLike = function(key, search) {
       if(this.data[i] && this.data[i][strKey] && typeof this.data[i][strKey] == 'string'){
         toSearch = this.data[i][strKey].toLowerCase();
         if(toSearch.indexOf(search)!=-1) {
-          results.push(i);
-          i++; // go to next result to avoid dubbel results
+          var iString = i.toString(); 
+          results[iString] = i;
         }
       }
     }
   }
+  results = this.cleanData(results);
   return results;
 };
 
